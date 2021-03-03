@@ -1,9 +1,10 @@
 import { createStore, combineReducers } from 'redux'
 import {animalReducer} from './animalReducer'
 
-export default createStore(
+const store = createStore(
   combineReducers({
-    animals: animalReducer
+    animals: animalReducer,
+    filter: (state = 0, action) => state
   }),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ) // store redux
@@ -20,3 +21,5 @@ store.dispatch({type:ADD_ANIMAL_ACTION, payload: {name:"Tiber"}}) // envoi une a
 store.dispatch({type:ADD_ANIMAL_ACTION, payload: {name:"Snake"}})
 
 **/
+
+export default store
