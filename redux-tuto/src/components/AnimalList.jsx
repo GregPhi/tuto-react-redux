@@ -1,5 +1,6 @@
-import React from 'react';
-import {connect} from 'react-redux';
+import React, {useCallback} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+//import {connect} from 'react-redux';
 import {animalsSelector} from '../store/animalSelectors'
 import {toggleAnimalAction} from '../store/animalActions'
 
@@ -18,9 +19,20 @@ export function AnimalList({animals, onToggle}){
   </ul>
 }
 
+// use Hooks
+
+export function AnimalListStore(){
+  const animals = useSelector(animalsSelector)
+  const dispatch = useDispatch()
+  const onToggle = useCallback( animal => {dispatch(toggleAnimalAction(animal))}, [])
+  return <AnimalList animals={animals} onToggle={onToggle} />
+}
+
+/**
 export const AnimalListStore = connect(
   (state) => ({animals: animalsSelector(state)}),
   (dispatch) => (
     { onToggle : animal => dispatch(toggleAnimalAction(animal))}
   )
 )(AnimalList)
+**/
