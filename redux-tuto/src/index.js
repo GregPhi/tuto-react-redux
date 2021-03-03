@@ -31,9 +31,12 @@ function animalsRedecuer(state = animals, action) {
   }
 }
 
+console.log("Animals : ");
 const firstAnimal = animalsRedecuer(undefined, {})
+console.log(firstAnimal);
+console.log("\n Animals with ADD");
 const newAnimal = animalsRedecuer(animals, {type:ADD_ANIMAL_ACTION, payload: {name:"Tiber"}})
-console.log(firstAnimal, newAnimal);
+console.log(newAnimal);
 
 /**
 import React from 'react';
