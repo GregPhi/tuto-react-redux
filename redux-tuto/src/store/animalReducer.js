@@ -14,7 +14,7 @@ const animals = [
   }
 ]
 
-export function animalsRedecuer(state = animals, action) {
+export function animalReducer(state = animals, action) {
   switch (action.type) {
     case ADD_ANIMAL_ACTION:
       return [...state, {animalId: ++animalId, ...action.payload , favorite:false}]

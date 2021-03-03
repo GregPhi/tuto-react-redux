@@ -1,8 +1,8 @@
 import { createStore } from 'redux'
-import {  animalsRedecuer } from './animalRedecuer'
+import {animalReducer} from './animalReducer'
 
-const store = createStore(
-  animalsRedecuer,
+export default createStore(
+  animalReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ) // store redux
 /**
