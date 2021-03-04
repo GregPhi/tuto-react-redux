@@ -25,7 +25,9 @@ export function AnimalList({animals, onToggle, onDelete, onAdd}){
 export function AnimalListStore(){
   const animals = useSelector(animalsSelector)
   const dispatch = useDispatch()
+  // eslint-disable-next-line
   const onToggle = useCallback( animal => {dispatch(toggleAnimalAction(animal))}, [])
+  // eslint-disable-next-line
   const onDelete = useCallback( animal => {dispatch(deleteAnimalAction(animal))}, [])
   return <AnimalList animals={animals} onToggle={onToggle} onDelete={onDelete} />
 }
