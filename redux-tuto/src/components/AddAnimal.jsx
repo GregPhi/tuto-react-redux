@@ -1,18 +1,11 @@
-import React, {useRef} from 'react';
+import React, {useCallback} from 'react';
 import {useDispatch} from 'react-redux';
 import {addAnimalAction} from '../store/animalActions'
+import NewAnimalForm from '../generics/NewAnimalForm'
 
 export function AddAnimalForm (){
   const dispatch = useDispatch()
-  const input = useRef(null)
-  const handleSubmit = e => {
-    e.preventDefault()
-    dispatch(addAnimalAction(input.current.value))
-    input.current.value = ''
-    input.current.focus()
-  }
-  return <form id="newAnimalInList" onSubmit={handleSubmit}>
-    <input type="text" placeholder="Name" ref={input}/>
-    <button>NewAnimal</button>
-  </form>
+
+  const handleSubmit = useCallback( animal => {dispatch(addAnimalAction(animal.name))}, [])
+  return <NewAnimalForm onAdd={handleSubmit} />
 }
